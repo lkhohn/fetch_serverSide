@@ -1,0 +1,28 @@
+var express = require('express');
+var router = express.Router();
+var bcrypt = require('bcrypt');
+var pg = require('pg');
+var knex = require('../db/knex');
+
+
+/* get all the fetches */
+router.get('/fetches', function(req, res, next){
+
+})
+
+/* add a new fetch */
+router.post('/new', function(req, res, next){
+  knex('fetches').insert({
+    content: req.body.content,
+    paymentAmount: req.body.paymentAmount,
+    paymentType: req.body.paymentType,
+    zipCode: req.body.zipCode
+  });
+});
+
+/* claim a fetch -- update fetch information */
+router.put('/claim', function(req, res, next){
+
+});
+
+module.exports = router;
