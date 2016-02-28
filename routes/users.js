@@ -1,9 +1,11 @@
 var express = require('express');
+var jsonWebToken = require('jsonwebtoken');
 var router = express.Router();
-
 var knex = require('../db/knex');
 var bcrypt = require('bcrypt');
 
+
+var secret="CHANGETOENV";
 
 
 function checkErr(res, err){
@@ -57,7 +59,12 @@ router.post('/signin', function(req, res, next) {
         if(match){
           var user = data;
           delete user.password;
-          res.end('success');
+          var expires = {
+            expiresInMinutes : 1600
+          };
+          var token = jsonWebToken.sign(user, secret, expires);
+          res.json({token : token});
+          res.end('End');
         } else {
           res.send('failed to authenicate');
         }
@@ -65,5 +72,6 @@ router.post('/signin', function(req, res, next) {
     }
   });
 });
+
 
 module.exports = router;

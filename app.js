@@ -35,11 +35,11 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
+var secret = "CHANGETOENV";
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/fetches', fetches);
+app.use('/fetches', jwt({secret:secret}), fetches);
 
 
 
