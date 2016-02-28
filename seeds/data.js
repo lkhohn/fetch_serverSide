@@ -14,16 +14,18 @@ exports.seed = function(knex, Promise) {
         firstName: 'firstName1',
         lastName: 'lastName1',
         phoneNumber: 1234567890,
-        zipCode: 80524
-      }).returning('id'),
+        zipCode: 80524,
+        ranking: 5
+      }).returning('user_id'),
       knex('users').insert({
         email: 'user2@email.com',
         password: 'password',
         firstName: 'firstName2',
         lastName: 'lastName2',
         phoneNumber: 2345678901,
-        zipCode: 80525
-      }).returning('id')
+        zipCode: 80525,
+        ranking: 1
+      }).returning('user_id')
     );
   }).then(function() {
     return Promise.join(
@@ -36,7 +38,7 @@ exports.seed = function(knex, Promise) {
         paymentAmount: 100.00,
         paymentType: 'cash',
         zipCode: 80524
-      }).returning('id'),
+      }).returning('fetch_id'),
       knex('fetches').insert({
         item: 'random things',
         dateRequested: '2016-1-15 13:59:17 -0600',
@@ -46,7 +48,7 @@ exports.seed = function(knex, Promise) {
         paymentAmount: 50.00,
         paymentType: 'bitcoin',
         zipCode: 80524
-      }).returning('id'),
+      }).returning('fetch_id'),
       knex('fetches').insert({
         item: 'a job',
         dateRequested: '2016-1-14 13:59:17 -0600',
@@ -56,7 +58,7 @@ exports.seed = function(knex, Promise) {
         paymentAmount: 20.00,
         paymentType: 'stripe',
         zipCode: 80525
-      }).returning('id')
+      }).returning('fetch_id')
     );
   });
 };
