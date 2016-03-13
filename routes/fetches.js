@@ -34,7 +34,7 @@ router.post('/', function(req, res, next){
     paymentType: newFetch.paymentType,
     zipCode: newFetch.zipCode,
     dateRequested: date,
-    requestor_id: req.user.user_id
+    requestor_id: req.user.id
   })
   .then(function(data, err){
     if(!checkErr(res, err)){
@@ -46,7 +46,7 @@ router.post('/', function(req, res, next){
 
 
 router.get('/:fetch_id', function(req, res, next){
-  knex('fetches').where({fetch_id: req.params.fetch_id})
+  knex('fetches').where({id: req.params.fetch_id})
   .then(function(data, err){
     if(!checkErr(res, err)){
       res.json(data);
@@ -66,14 +66,14 @@ router.delete('/:fetch_id', function(req, res, next) {
 
 router.put('/claim/:fetch_id', function(req, res, next) {
   var date = new Date();
-  knex('fetches').where({fetch_id: req.params.fetch_id})
+  knex('fetches').where({id: req.params.fetch_id})
   .update({
       item: req.body.item,
       paymentAmount: req.body.paymentAmount,
       paymentType: req.body.paymentType,
       zipCode: req.body.zipCode,
       dateClaimed: date,
-      claimor_id: req.user.user_id
+      claimor_id: req.user.id
     })
   .then(function(data, err) {
     if(!checkErr(res, err))
@@ -83,6 +83,19 @@ router.put('/claim/:fetch_id', function(req, res, next) {
   });
 });
 
+router.put('/close/:fetch_id', function(req, res, next) {
+  var date = new Date();
+  knex('fetches').where({id: req.params.fetch_id})
+  .update({
+    dateClosed: date
+  })
+  .then(function(data, err) {
+    if(!checkErr(res, err))
+    {
+      res.send('success');
+    }
+  });
+});
 
 
 

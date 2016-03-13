@@ -10,18 +10,18 @@ exports.seed = function(knex, Promise) {
     return Promise.join(
       knex('users').insert({
         email: 'user1@email.com',
-        password: 'password',
         firstName: 'firstName1',
         lastName: 'lastName1',
+        password: 'password',
         phoneNumber: 1234567890,
         zipCode: 80524
       }).returning('id'),
       knex('users').insert({
         email: 'user2@email.com',
-        password: 'password',
         firstName: 'firstName2',
         lastName: 'lastName2',
-        phoneNumber: 2345678901,
+        password: 'password',
+        phoneNumber: 1234567890,
         zipCode: 80525
       }).returning('id')
     );

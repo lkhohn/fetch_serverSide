@@ -31,7 +31,7 @@ router.post('/signup', function(req, res, next) {
       phoneNumber: user.phoneNumber,
       zipCode: user.zipCode
     })
-    .returning('user_id')
+    .returning('id')
     .then(function(data, err){
       if(!checkErr(res, err)){
         res.send('success');
