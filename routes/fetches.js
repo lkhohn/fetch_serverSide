@@ -73,7 +73,7 @@ router.put('/claim/:fetch_id', function(req, res, next) {
       paymentType: req.body.paymentType,
       zipCode: req.body.zipCode,
       dateClaimed: date,
-      claimor_id: req.body.claimor_id
+      claimor_id: req.user.user_id
     })
   .then(function(data, err) {
     if(!checkErr(res, err))

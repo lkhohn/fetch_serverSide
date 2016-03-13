@@ -1,4 +1,4 @@
-// Update with your config settings.
+// // Update with your config settings.
 //
 // module.exports = {
 //
@@ -44,15 +44,12 @@
 // };
 
 module.exports = {
-
   development: {
-    client: 'pg',
-    connection: 'postgres://localhost:5432/fetch'
+    client:'pg',
+    connection: 'postgres://localhost:5432/fetchapp'
   },
-
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL
   }
-
 };
