@@ -60,7 +60,7 @@ router.post('/signin', function(req, res, next) {
           var user = data;
           delete user.password;
           var expires = {
-            expiresInMinutes : 1600
+            expiresIn : '7d'
           };
           var token = jsonWebToken.sign(user, secret, expires);
           res.json({token : token});

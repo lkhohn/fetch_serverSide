@@ -1,7 +1,12 @@
 var express = require('express');
+var jsonWebToken = require('jsonwebtoken');
 var router = express.Router();
-
 var knex = require('../db/knex');
+var bcrypt = require('bcrypt');
+
+
+var secret="CHANGETOENV";
+
 
 
 function checkErr(res, err){
@@ -16,7 +21,7 @@ function checkErr(res, err){
 
 /* get all the fetches */
 router.get('/', function(req, res, next){
-  knex('fetches').where({requestor_id: req.user.user_id})
+  knex('fetches').select()
   .then(function(data, err){
     if(!checkErr(res, err)){
       res.json(data);
@@ -43,6 +48,15 @@ router.post('/', function(req, res, next){
   });
 });
 
+//INCORRECT ROUTE. NEED ROUTE TO FIND SPECIFIC FETCHES FOR SPECIFIC USER
+// router.get('/user/:user_id', function(req, res, next){
+//   knex('fetches').where({requestor_id: req.user.user_id})
+//   .then(function(data, err){
+//     if(!checkErr(res, err)){
+//       res.json(data);
+//     }
+//   });
+// })
 
 
 router.get('/:fetch_id', function(req, res, next){
