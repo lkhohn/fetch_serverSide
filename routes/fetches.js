@@ -21,9 +21,13 @@ function checkErr(res, err){
 
 /* get all the fetches */
 router.get('/', function(req, res, next){
+  // console.log(req.user.id)
+  // console.log(data)
   knex('fetches').select()
+  .where({requestor_id: req.user.id})
   .then(function(data, err){
     if(!checkErr(res, err)){
+      // console.log(data);
       res.json(data);
     }
   });
@@ -48,15 +52,7 @@ router.post('/', function(req, res, next){
   });
 });
 
-//INCORRECT ROUTE. NEED ROUTE TO FIND SPECIFIC FETCHES FOR SPECIFIC USER
-// router.get('/user/:user_id', function(req, res, next){
-//   knex('fetches').where({requestor_id: req.user.user_id})
-//   .then(function(data, err){
-//     if(!checkErr(res, err)){
-//       res.json(data);
-//     }
-//   });
-// })
+
 
 
 router.get('/:fetch_id', function(req, res, next){
@@ -113,6 +109,14 @@ router.put('/close/:fetch_id', function(req, res, next) {
 
 
 
+// router.get('/user/:user_id', function(req, res, next){
+//   knex('fetches').select().where({requestor_id: req.params.user_id})
+//   .then(function(data, err){
+//     if(!checkErr(res, err)){
+//       res.json(data);
+//     }
+//   });
+// });
 
 
 
