@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 var corsOptions = {
-  origin: true
+  origin: '*'
 };
 app.use(cors(corsOptions));
 
