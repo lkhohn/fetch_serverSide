@@ -74,9 +74,10 @@ router.delete('/:fetch_id', function(req, res, next) {
   });
 });
 
-router.put('/claim/:fetch_id', function(req, res, next) {
+router.put('/claim', function(req, res, next) {
   var date = new Date();
-  knex('fetches').where({id: req.params.fetch_id})
+  // console.log(req.user);
+  knex('fetches').where({id: req.body.fetch_id})
   .update({
       item: req.body.item,
       paymentAmount: req.body.paymentAmount,
