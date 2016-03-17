@@ -77,7 +77,7 @@ router.delete('/:fetch_id', function(req, res, next) {
 router.put('/claim', function(req, res, next) {
   var date = new Date();
   // console.log(req.user);
-  knex('fetches').where({id: req.body.fetch_id})
+  knex('fetches').where({id: req.body.id})
   .update({
       item: req.body.item,
       paymentAmount: req.body.paymentAmount,

@@ -3,7 +3,7 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 
-var secret = "CHANGETOENV";
+
 
 
 router.get('/availableFetches', function(req, res, next){
@@ -14,4 +14,5 @@ router.get('/availableFetches', function(req, res, next){
     // }
   });
 });
+
 module.exports = router;
