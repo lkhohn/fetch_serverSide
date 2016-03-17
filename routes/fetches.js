@@ -40,7 +40,8 @@ router.post('/', function(req, res, next){
   knex('fetches').insert({
     item: newFetch.item,
     paymentAmount: newFetch.paymentAmount,
-    paymentType: newFetch.paymentType,
+    paymentType: "cash",
+    // paymentType: newFetch.paymentType,
     zipCode: newFetch.zipCode,
     dateRequested: date,
     requestor_id: req.user.id
