@@ -94,9 +94,9 @@ router.put('/claim', function(req, res, next) {
   });
 });
 
-router.put('/close/:fetch_id', function(req, res, next) {
+router.put('/close', function(req, res, next) {
   var date = new Date();
-  knex('fetches').where({id: req.params.fetch_id})
+  knex('fetches').where({id: req.body.id})
   .update({
     dateClosed: date
   })
