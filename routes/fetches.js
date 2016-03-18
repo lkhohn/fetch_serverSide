@@ -43,8 +43,8 @@ router.post('/', function(req, res, next){
     paymentType: "cash",
     // paymentType: newFetch.paymentType,
     zipCode: newFetch.zipCode,
-    latitude: newFetch.latitude,
-    longitude: newFetch.longitude,
+    lat: newFetch.lat,
+    lng: newFetch.lng,
     dateRequested: date,
     requestor_id: req.user.id
   })
