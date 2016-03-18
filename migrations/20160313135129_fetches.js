@@ -10,8 +10,8 @@ exports.up = function(knex, Promise) {
     table.decimal('paymentAmount', 100);
     table.text('paymentType');
     table.integer('zipCode', 5);
-    table.decimal('latitude');
-    table.decimal('longitude');
+    table.decimal('latitude', 50);
+    table.decimal('longitude', 50);
   });
 };
 
