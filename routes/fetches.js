@@ -46,7 +46,8 @@ router.post('/', function(req, res, next){
     lat: newFetch.lat,
     lng: newFetch.lng,
     dateRequested: date,
-    requestor_id: req.user.id
+    requestor_id: req.user.id,
+    address: newFetch.address
   })
   .then(function(data, err){
     if(!checkErr(res, err)){

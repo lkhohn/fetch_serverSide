@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
     table.integer('zipCode', 5);
     table.decimal('lat', 50, 10);
     table.decimal('lng', 50, 10);
+    table.text('address', 500);
   });
 };
 
