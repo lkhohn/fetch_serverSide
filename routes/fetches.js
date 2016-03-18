@@ -113,6 +113,16 @@ router.put('/close', function(req, res, next) {
 });
 
 
+router.get('/userClaimedFetch', function(req, res, next){
+  knex('fetches').select()
+  .where({claimor_id: req.user.id})
+  .then(function(data, err){
+    if(!checkErr(res, err)){
+      // console.log(data);
+      res.json(data);
+    }
+  });
+});
 
 
 
