@@ -37,7 +37,9 @@ exports.seed = function(knex, Promise) {
         claimor_id: 2,
         paymentAmount: 100.00,
         paymentType: 'cash',
-        zipCode: 80524
+        zipCode: 80524,
+        latitude: 40.6164880,
+        longitude: -105.0546720
       }).returning('id'),
       knex('fetches').insert({
         item: 'random things',
@@ -48,7 +50,9 @@ exports.seed = function(knex, Promise) {
         claimor_id: 2,
         paymentAmount: 50.00,
         paymentType: 'bitcoin',
-        zipCode: 80524
+        zipCode: 80524,
+        latitude: 40.6000023,
+        longitude: -105.0728681
       }).returning('id'),
       knex('fetches').insert({
         item: 'a job',
@@ -58,7 +62,9 @@ exports.seed = function(knex, Promise) {
         claimor_id: 1,
         paymentAmount: 20.00,
         paymentType: 'stripe',
-        zipCode: 80525
+        zipCode: 80525,
+        latitude: 40.5820133,
+        longitude: -105.0750997
       }).returning('id')
     );
   })

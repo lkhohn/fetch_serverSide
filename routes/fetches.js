@@ -43,6 +43,8 @@ router.post('/', function(req, res, next){
     paymentType: "cash",
     // paymentType: newFetch.paymentType,
     zipCode: newFetch.zipCode,
+    latitude: newFetch.latitude,
+    longitude: newFetch.longitude,
     dateRequested: date,
     requestor_id: req.user.id
   })
@@ -108,18 +110,6 @@ router.put('/close', function(req, res, next) {
     }
   });
 });
-
-
-
-// router.get('/user/:user_id', function(req, res, next){
-//   knex('fetches').select().where({requestor_id: req.params.user_id})
-//   .then(function(data, err){
-//     if(!checkErr(res, err)){
-//       res.json(data);
-//     }
-//   });
-// });
-
 
 
 
