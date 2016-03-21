@@ -25,7 +25,7 @@ router.get('/userHistory', function(req, res, next){
 })
 .then(function(data,err){
   // if(!checkErr(res, err)){
-    res.send(data);
+    res.json(data);
   // }
   });
 })
