@@ -73,5 +73,18 @@ router.post('/signin', function(req, res, next) {
   });
 });
 
+router.get('/userHistory', function(req, res, next){
+  knex('fetches')
+  .where({requestor_id: req.user.id})
+  .join('users', users.id, fetches.requestor_id)
+  // .select(users.id, users.email, users.firstName);
+  // .select(fetches.*, users.id, users.email, "users"."firstName", "users"."lastName", "users"."phoneNumber")
+})
+.then(function(data,err){
+  // if(!checkErr(res, err)){
+    res.json(data);
+  // }
+  });
+})
 
 module.exports = router;
