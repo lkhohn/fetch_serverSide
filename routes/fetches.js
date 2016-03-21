@@ -64,10 +64,10 @@ router.get('/userHistory', function(req, res, next){
   // .select(fetches.*, users.id, users.email, "users"."firstName", "users"."lastName", "users"."phoneNumber")
 .then(function(data, err){
   if(!checkErr(res, err)){
-    res.send('success');
+    res.json(data);
   }
   });
-})
+});
 
 
 // router.get('/:fetch_id', function(req, res, next){
