@@ -56,7 +56,18 @@ router.post('/', function(req, res, next){
   });
 });
 
-
+router.get('/userHistory', function(req, res, next){
+  knex('fetches')
+  .where({claimor_id: req.user.id})
+  // .select(users.id, users.email, users.firstName);
+  // .select(fetches.*, users.id, users.email, "users"."firstName", "users"."lastName", "users"."phoneNumber")
+})
+.then(function(data,err){
+  // if(!checkErr(res, err)){
+    res.json(data);
+  // }
+  });
+})
 
 
 // router.get('/:fetch_id', function(req, res, next){
