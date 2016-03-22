@@ -4,6 +4,9 @@ var router = express.Router();
 var knex = require('../db/knex');
 var bcrypt = require('bcrypt');
 
+var http = require('http').Server(express);
+var io = require('socket.io')(http);
+
 
 var secret="CHANGETOENV";
 
