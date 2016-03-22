@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var corsOptions = {
   origin: 'http://localhost:8100',
-  withCredentials: true
+  'Access-Control-Allow-Credentials': true
 };
 app.use(cors(corsOptions));
 
