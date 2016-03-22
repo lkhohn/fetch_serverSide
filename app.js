@@ -3,7 +3,7 @@ require('dotenv').load();
 var express = require('express');
 // var http = require('http').Server(express);
 // var io = require('socket.io')(http);
-//
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -45,46 +45,6 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/fetches', jwt({secret:secret}), fetches);
 
-
-// socket.io
-// app.get('/', function (req, res) {
-//   res.sendfile(__dirname + '/index.html');
-// });
-//
-// io.configure(function () {
-//   io.set("transports", ["xhr-polling"]);
-//   io.set("polling duration", 10);
-// });
-//
-// var port = process.env.PORT || 2000; // Use the port that Heroku provides or default to 5000
-// app.listen(port, function() {
-//   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-// });
-//
-// http.listen(2000, function(){
-//     console.log('Listening on port 2000');
-// });
-
-
-// io.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });
-
-// io.on('connectFindFetch', function(socket){
-//   socket.on('new fetch', function(data){
-//     socket.get('fetchDetails', function(err, key){
-//       var fetch = fetchDetails[key];
-//       socket.broadcast.emit("fetch update", data);
-//
-//     });
-//   });
-// });
-// socket.on('getFetches', function(sendData){
-//   sendData =
-// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

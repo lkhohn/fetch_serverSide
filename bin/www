@@ -99,3 +99,11 @@ io.on('connection', function (socket) {
     console.log(data);
   });
 });
+
+io.on('connection', function(socket){
+  socket.on('fetch update', function(data){
+    console.log('data');
+
+
+    });
+});
