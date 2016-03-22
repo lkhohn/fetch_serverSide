@@ -97,9 +97,9 @@ io.on('connection', function (socket) {
   // socket.emit('news', { hello: 'world' });
     setInverval(function(){
       socket.on('new fetch', function (data) {
-      socket.emit('update available fetch', data);
     });
     }, 1000);
+    socket.emit('update available fetch', data);
   //   socket.on('new fetch', function (data) {
   //   socket.emit('update available fetch', data);
   // });
