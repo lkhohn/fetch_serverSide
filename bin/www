@@ -93,12 +93,16 @@ function onListening() {
 
 
 
-
 io.on('connection', function (socket) {
   // socket.emit('news', { hello: 'world' });
-  socket.on('new fetch', function (data) {
-    socket.emit('update available fetch', data);
-  });
+    setInverval(function(){
+      socket.on('new fetch', function (data) {
+      socket.emit('update available fetch', data);
+    });
+    }, 1000);
+  //   socket.on('new fetch', function (data) {
+  //   socket.emit('update available fetch', data);
+  // });
 //   socket.on('fetch add', function(newFetchData){
 //     socket.broadcast.emit("new fetch", newFetchData);
 //   });
