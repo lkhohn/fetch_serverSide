@@ -53,9 +53,15 @@ router.post('/', function(req, res, next){
     address: newFetch.address
   })
   .then(function(data, err){
-    if(!checkErr(res, err)){
-      res.send('success');
-    }
+    // open a socket to have that connection for available fetches
+    // if(!checkErr(res, err)){
+      io.on('connection', function (socket) {
+        // socket.on('new fetch added', function (data) {
+          socket.emit('new fetch', data);
+        });
+      // });
+      // res.send('success');
+    // }
   });
 });
 
