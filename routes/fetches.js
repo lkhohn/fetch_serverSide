@@ -54,14 +54,14 @@ router.post('/', function(req, res, next){
   })
   .then(function(data, err){
     // open a socket to have that connection for available fetches
-    // if(!checkErr(res, err)){
+    if(!checkErr(res, err)){
       io.on('connection', function (socket) {
         // socket.on('new fetch added', function (data) {
           socket.emit('new fetch', data);
         });
       // });
       // res.send('success');
-    // }
+    }
   });
 });
 
