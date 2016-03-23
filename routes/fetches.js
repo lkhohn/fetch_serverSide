@@ -55,14 +55,12 @@ router.post('/', function(req, res, next){
   .then(function(data, err){
     // open a socket to have that connection for available fetches
     if(!checkErr(res, err)){
-      var socket = io.connect('https://mysterious-waters-23406.herokuapp.com');
+      // var socket = io.connect('https://mysterious-waters-23406.herokuapp.com');
+      // socket.on('connection', function (socket) {
+          // socket.emit('new fetch', data);
+        // });
 
-      socket.on('connection', function (socket) {
-        // socket.on('new fetch added', function (data) {
-          socket.emit('new fetch', data);
-        });
-      // });
-      // res.send('success');
+      res.send('success');
     }
   });
 });
