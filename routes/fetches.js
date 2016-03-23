@@ -57,7 +57,7 @@ router.post('/', function(req, res, next){
     if(!checkErr(res, err)){
       var socket = io.connect('https://mysterious-waters-23406.herokuapp.com');
 
-      io.on('connection', function (socket) {
+      socket.on('connection', function (socket) {
         // socket.on('new fetch added', function (data) {
           socket.emit('new fetch', data);
         });
