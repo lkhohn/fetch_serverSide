@@ -125,16 +125,6 @@ router.put('/close', function(req, res, next) {
     {
       globalObject.socketServer.emit('claimOrClose', {
         dateClosed: date
-        item: newFetch.item,
-        paymentAmount: newFetch.paymentAmount,
-        paymentType: "cash",
-        // paymentType: newFetch.paymentType,
-        zipCode: newFetch.zipCode,
-        lat: newFetch.lat,
-        lng: newFetch.lng,
-        dateRequested: date,
-        requestor_id: req.user.id,
-        address: newFetch.address
       });
       res.send('success');
     }
