@@ -97,6 +97,7 @@ function onListening() {
 
 io.on('connection', function (socket) {
   console.log('socket connected ' + socket.id);
+  io.emit('test', {test:'test'});
 });
 
 globalObject.socketServer = io;
