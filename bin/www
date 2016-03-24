@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+globalObject = {};
 var app = require('../app');
 var debug = require('debug')('scout_serverSide:server');
 var http = require('http');
@@ -95,9 +96,7 @@ function onListening() {
 
 
 io.on('connection', function (socket) {
-  // socket.emit('news', { hello: 'world' });
-  socket.on('new fetch', function (data) {
-    socket.emit('update available fetch', data);
-  });
-
+  console.log('socket connected ' + socket.id);
 });
+
+globalObject.socketServer = io;

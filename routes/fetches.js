@@ -36,6 +36,7 @@ router.get('/', function(req, res, next){
   });
 });
 
+
 /* add a new fetch */
 router.post('/', function(req, res, next){
   var newFetch = req.body;
@@ -57,7 +58,7 @@ router.post('/', function(req, res, next){
     if(!checkErr(res, err)){
       // var socket = io.connect('https://mysterious-waters-23406.herokuapp.com');
       // socket.on('connection', function (socket) {
-          // socket.emit('new fetch', data);
+          globalObject.socketServer.emit('update', newFetch);
         // });
 
       res.send('success');
