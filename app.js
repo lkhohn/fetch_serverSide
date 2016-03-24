@@ -1,9 +1,6 @@
 require('dotenv').load();
 
 var express = require('express');
-// var http = require('http').Server(express);
-// var io = require('socket.io')(http);
-
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
