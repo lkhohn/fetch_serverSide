@@ -55,7 +55,7 @@ router.post('/', function(req, res, next){
   })
   .then(function(data, err){
     if(!checkErr(res, err)){
-      globalObject.socketServer.send('update', {
+      globalObject.socketServer.emit('update', {
         item: newFetch.item,
         paymentAmount: newFetch.paymentAmount,
         paymentType: "cash",
