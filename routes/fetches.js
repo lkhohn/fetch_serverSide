@@ -86,25 +86,6 @@ router.get('/userHistory', function(req, res, next){
 });
 
 
-// router.get('/:fetch_id', function(req, res, next){
-//   knex('fetches').where({id: req.params.fetch_id})
-//   .then(function(data, err){
-//     if(!checkErr(res, err)){
-//       res.json(data);
-//     }
-//   });
-// });
-//
-//
-// router.delete('/:fetch_id', function(req, res, next) {
-//   knex('fetches').where({user_id : req.params.fetch_id}).del()
-//   .then(function(data, err) {
-//     if(!checkErr(res, err)){
-//       res.send('success');
-//     }
-//   });
-// });
-
 router.put('/claim', function(req, res, next) {
   var date = new Date();
   // console.log(req.user);
@@ -120,6 +101,14 @@ router.put('/claim', function(req, res, next) {
   .then(function(data, err) {
     if(!checkErr(res, err))
     {
+      globalObject.socketServer.emit('claimOrClose', {
+        item: req.body.item,
+        paymentAmount: req.body.paymentAmount,
+        paymentType: req.body.paymentType,
+        zipCode: req.body.zipCode,
+        dateClaimed: date,
+        claimor_id: req.user.id
+      });
       res.send('success');
     }
   });
