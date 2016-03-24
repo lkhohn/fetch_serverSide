@@ -54,13 +54,19 @@ router.post('/', function(req, res, next){
     address: newFetch.address
   })
   .then(function(data, err){
-    // open a socket to have that connection for available fetches
     if(!checkErr(res, err)){
-      // var socket = io.connect('https://mysterious-waters-23406.herokuapp.com');
-      // socket.on('connection', function (socket) {
-          globalObject.socketServer.emit('update', newFetch);
-        // });
-
+      globalObject.socketServer.emit('update', {
+        item: newFetch.item,
+        paymentAmount: newFetch.paymentAmount,
+        paymentType: "cash",
+        // paymentType: newFetch.paymentType,
+        zipCode: newFetch.zipCode,
+        lat: newFetch.lat,
+        lng: newFetch.lng,
+        dateRequested: date,
+        requestor_id: req.user.id,
+        address: newFetch.address
+      });
       res.send('success');
     }
   });
