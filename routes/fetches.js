@@ -123,6 +123,9 @@ router.put('/close', function(req, res, next) {
   .then(function(data, err) {
     if(!checkErr(res, err))
     {
+      globalObject.socketServer.emit('claimOrClose', {
+        dateClosed: date
+      });
       res.send('success');
     }
   });
