@@ -97,6 +97,22 @@ router.get('/userHistory', function(req, res, next){
 });
 
 
+router.put('/update', function(req, res, next){
+  knex('fetches').where({id: req.user.id})
+  .update({
+    item: req.body.item,
+    paymentAmount: req.body.paymentAmount,
+    paymentType: req.body.paymentType
+  })
+  .then(function(data, err){
+    if(!checkErr(res, err))
+    {
+      res.send('success');
+    }
+  });
+});
+
+
 router.put('/claim', function(req, res, next) {
   var date = new Date();
   // console.log(req.user);
@@ -137,6 +153,16 @@ router.put('/close', function(req, res, next) {
       globalObject.socketServer.emit('claimOrClose', {
         dateClosed: date
       });
+      res.send('success');
+    }
+  });
+});
+
+router.delete('/delete', function(req, res, next){
+  knex('fetches').where({id: req.body.id}).del()
+  .then(function(data, err){
+    if(!checkErr(res, err))
+    {
       res.send('success');
     }
   });
