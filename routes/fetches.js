@@ -42,11 +42,18 @@ router.get('/claimableFetches', function(req, res, next){
   // .where({requestor_id: !req.user.id})
   .then(function(data, err){
     if(!checkErr(res, err)){
-      if(data.requestor_id != req.user.id){
-        console.log(data);
-        console.log(req.user.id);
-      res.json(data);
+      var dataArray = [];
+      for(var i=0; i<data.length; i++){
+        if(data[i].requestor_id != req.user.id){
+          dataArray.push(data[i].requestor_id);
+          res.json(dataArray);
+        }
       }
+      // if(data.requestor_id != req.user.id){
+        // console.log(data);
+        // console.log(req.user.id);
+      // res.json(data);
+      // }
     }
   });
 });
