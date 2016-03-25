@@ -22,7 +22,7 @@ function checkErr(res, err){
 }
 
 
-/* get all the fetches */
+/* get all the fetches for current user*/
 router.get('/', function(req, res, next){
   // console.log(req.user.id)
   // console.log(data)
@@ -31,6 +31,17 @@ router.get('/', function(req, res, next){
   .then(function(data, err){
     if(!checkErr(res, err)){
       // console.log(data);
+      res.json(data);
+    }
+  });
+});
+
+/*get all the fetches that are NOT from the current user */
+router.get('/claimableFetches', function(req, res, next){
+  knex('fetches').select()
+  .where({requestor_id: !req.user.id})
+  .then(function(data, err){
+    if(!checkErr(res, err)){
       res.json(data);
     }
   });
