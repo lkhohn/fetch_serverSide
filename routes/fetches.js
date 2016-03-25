@@ -41,9 +41,10 @@ router.get('/claimableFetches', function(req, res, next){
   knex('fetches').select()
   // .where({requestor_id: !req.user.id})
   .then(function(data, err){
-    console.log(data)
     if(!checkErr(res, err)){
       if(data.requestor_id != req.user.id){
+        console.log(data);
+        console.log(req.user.id);
       res.json(data);
       }
     }
