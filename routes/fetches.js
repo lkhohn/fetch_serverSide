@@ -39,7 +39,7 @@ router.get('/', function(req, res, next){
 /*get all the fetches that are NOT from the current user */
 router.get('/claimableFetches', function(req, res, next){
   knex('fetches').select()
-  .whereNOT({requestor_id: req.user.id})
+  .whereNot({requestor_id: req.user.id})
   .then(function(data, err){
     if(!checkErr(res, err)){
       res.json(data);
