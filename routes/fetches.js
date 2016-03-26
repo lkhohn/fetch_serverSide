@@ -159,6 +159,7 @@ router.put('/close', function(req, res, next) {
 });
 
 router.delete('/delete', function(req, res, next){
+  console.log(req.body)
   knex('fetches').where({id: req.body.id}).del()
   .then(function(data, err){
     if(!checkErr(res, err))
