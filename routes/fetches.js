@@ -98,7 +98,7 @@ router.get('/userHistory', function(req, res, next){
 
 
 router.put('/update', function(req, res, next){
-  knex('fetches').where({id: req.user.id})
+  knex('fetches').where({id: req.body.id})
   .update({
     item: req.body.item,
     paymentAmount: req.body.paymentAmount,
