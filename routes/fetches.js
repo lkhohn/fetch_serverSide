@@ -159,11 +159,14 @@ router.put('/close', function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next){
-  console.log(req.body)
+  // console.log(req.body);
   knex('fetches').where({id: req.body.id}).del()
   .then(function(data, err){
     if(!checkErr(res, err))
     {
+        globalObject.socketServer.emit('claimOrClose', {
+
+        });
       res.send('success');
     }
   });
