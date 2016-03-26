@@ -163,7 +163,7 @@ router.delete('/delete', function(req, res, next){
   .then(function(data, err){
     if(!checkErr(res, err))
     {
-      res.send('success');
+      res.json(data);
     }
   });
 });
