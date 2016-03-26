@@ -102,7 +102,7 @@ router.put('/update', function(req, res, next){
   .update({
     item: req.body.item,
     paymentAmount: req.body.paymentAmount,
-    paymentType: req.body.paymentType
+    address: req.body.address
   })
   .then(function(data, err){
     if(!checkErr(res, err))
