@@ -29,8 +29,7 @@ router.post('/signup', function(req, res, next) {
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
-      phoneNumber: user.phoneNumber,
-      zipCode: user.zipCode
+      phoneNumber: user.phoneNumber
     })
     .returning('id')
     .then(function(data, err){
