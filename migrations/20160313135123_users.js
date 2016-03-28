@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     table.text('lastName', 255);
     table.text('password', 50);
     table.bigint('phoneNumber', 12);
-    table.integer('zipCode', 5);
   });
 };
 
