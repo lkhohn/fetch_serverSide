@@ -13,16 +13,14 @@ exports.seed = function(knex, Promise) {
         firstName: 'firstName1',
         lastName: 'lastName1',
         password: 'password',
-        phoneNumber: 1234567890,
-        zipCode: 80524
+        phoneNumber: 1234567890
       }).returning('id'),
       knex('users').insert({
         email: 'user2@email.com',
         firstName: 'firstName2',
         lastName: 'lastName2',
         password: 'password',
-        phoneNumber: 1234567890,
-        zipCode: 80525
+        phoneNumber: 8592403279
       }).returning('id')
     );
   })
@@ -35,15 +33,14 @@ exports.seed = function(knex, Promise) {
         dateClosed:  '2016-1-30 23:59:17 -0600',
         requestor_id: 1,
         claimor_id: 2,
-        paymentAmount: 100.00,
+        paymentAmount: 50.00,
         paymentType: 'cash',
-        zipCode: 80524,
         lat: 40.616488,
         lng: -105.054672,
         address: '2608 Greenmont Drive, Fort Collins, CO 80524, USA'
       }).returning('id'),
       knex('fetches').insert({
-        item: 'random things',
+        item: 'two bottle of champagne',
         dateRequested: '2016-1-15 13:59:17 -0600',
         dateClaimed: '2016-1-15 23:59:17 -0600',
         dateClosed:  '2016-1-16 23:59:17 -0600',
@@ -51,20 +48,18 @@ exports.seed = function(knex, Promise) {
         claimor_id: 2,
         paymentAmount: 50.00,
         paymentType: 'bitcoin',
-        zipCode: 80524,
         lat: 40.582008,
         lng: -105.075115,
         address: '418 Remington St, Fort Collins, CO 80524, USA'
       }).returning('id'),
       knex('fetches').insert({
-        item: 'a job',
+        item: '1 case of Odell IPA',
         dateRequested: '2016-1-14 13:59:17 -0600',
         dateClaimed: '2016-1-30 23:59:17 -0600',
         requestor_id: 2,
         claimor_id: 1,
-        paymentAmount: 20.00,
+        paymentAmount: 30.00,
         paymentType: 'stripe',
-        zipCode: 80525,
         lat: 40.598873,
         lng: -105.072170,
         address: '909 Blondel St, Fort Collins, CO 80524, USA'

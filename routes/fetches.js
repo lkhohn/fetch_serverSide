@@ -57,7 +57,6 @@ router.post('/', function(req, res, next){
     paymentAmount: newFetch.paymentAmount,
     paymentType: "cash",
     // paymentType: newFetch.paymentType,
-    zipCode: newFetch.zipCode,
     lat: newFetch.lat,
     lng: newFetch.lng,
     dateRequested: date,
@@ -71,7 +70,6 @@ router.post('/', function(req, res, next){
         paymentAmount: newFetch.paymentAmount,
         paymentType: "cash",
         // paymentType: newFetch.paymentType,
-        zipCode: newFetch.zipCode,
         lat: newFetch.lat,
         lng: newFetch.lng,
         dateRequested: date,
@@ -121,7 +119,6 @@ router.put('/claim', function(req, res, next) {
       item: req.body.item,
       paymentAmount: req.body.paymentAmount,
       paymentType: req.body.paymentType,
-      zipCode: req.body.zipCode,
       dateClaimed: date,
       claimor_id: req.user.id
     })
@@ -132,7 +129,6 @@ router.put('/claim', function(req, res, next) {
         item: req.body.item,
         paymentAmount: req.body.paymentAmount,
         paymentType: req.body.paymentType,
-        zipCode: req.body.zipCode,
         dateClaimed: date,
         claimor_id: req.user.id
       });

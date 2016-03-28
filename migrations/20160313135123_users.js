@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.text('firstName', 255);
     table.text('lastName', 255);
     table.text('password', 50);
-    table.integer('phoneNumber', 12);
+    table.bigint('phoneNumber', 12);
     table.integer('zipCode', 5);
   });
 };
