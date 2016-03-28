@@ -20,6 +20,7 @@ function checkErr(res, err){
 
 router.post('/signup', function(req, res, next) {
   var user = req.body;
+  console.log(req.body);
   hashPassword(user, registerUser);
 
   function registerUser(user){
@@ -60,7 +61,7 @@ router.post('/signin', function(req, res, next) {
           var user = data;
           delete user.password;
           var expires = {
-            expiresIn : '5m'
+            expiresIn : '7d'
           };
           var token = jsonWebToken.sign(user, secret, expires);
           res.json({token : token});
