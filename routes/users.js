@@ -43,7 +43,7 @@ router.post('/signup', function(req, res, next) {
 
         var token = jsonWebToken.sign(user, secret, expires);
 
-        res.json({token : token});
+        res.json({token : token, id: data});
         res.end('End');
         res.send('success');
       }
