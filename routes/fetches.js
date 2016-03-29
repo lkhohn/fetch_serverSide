@@ -169,5 +169,15 @@ router.post('/delete', function(req, res, next){
 });
 
 
+router.get('/userInformation', function(req, res, next){
+  console.log(req.user);
+  knex('users').select().where({id: req.user.id})
+  .then(function(data, err){
+    if(!checkErr(res, err)){
+      res.json(data);
+    }
+  });
+});
+
 
 module.exports = router;
