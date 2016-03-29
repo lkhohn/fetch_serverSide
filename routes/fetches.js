@@ -187,7 +187,7 @@ router.get('/userInformation', function(req, res, next){
 // route that connects the current req.user id with the claimor_id. Then join that fetch's id requestor_id to the their ID on the users table.
  router.get('/retrievingFetchContactInfo', function(req, res, next){
    console.log(req.user)
-   knex('fetches').select().leftOuterJoin('users').on('fetches.requestor_id', '=', 'users.id').where('claimor_id', '=', 'req.user.id')
+   knex('fetches').select().leftOuterJoin('users').on('fetches.requestor_id', '=', 'users.id').where('fetches.claimor_id', '=', 'req.user.id')
    .then(function(data, err){
      console.log(data)
    res.json(data);
