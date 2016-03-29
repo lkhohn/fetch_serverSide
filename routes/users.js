@@ -34,6 +34,13 @@ router.post('/signup', function(req, res, next) {
     .returning('id')
     .then(function(data, err){
       if(!checkErr(res, err)){
+        var expires = {
+          expiresIn : '7d'
+        };
+        var token = jsonWebToken.sign(user, secret, expires);
+
+        res.json({token : token});
+        res.end('End');
         res.send('success');
       }
     });
@@ -42,13 +49,8 @@ router.post('/signup', function(req, res, next) {
     bcrypt.genSalt(10, function(err, salt){
       bcrypt.hash(user.password, salt, function(err, hash){
         user.password = hash;
-        var expires = {
-          expiresIn : '7d'
-        };
-        var token = jsonWebToken.sign(user, secret, expires);
         callback(user);
-        res.json({token : token});
-        res.end('End');
+
 
       });
     });
