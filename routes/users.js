@@ -42,7 +42,14 @@ router.post('/signup', function(req, res, next) {
     bcrypt.genSalt(10, function(err, salt){
       bcrypt.hash(user.password, salt, function(err, hash){
         user.password = hash;
+        var expires = {
+          expiresIn : '7d'
+        };
+        var token = jsonWebToken.sign(user, secret, expires);
         callback(user);
+        res.json({token : token});
+        res.end('End');
+
       });
     });
   }
