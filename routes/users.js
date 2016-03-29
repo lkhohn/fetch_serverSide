@@ -32,12 +32,16 @@ router.post('/signup', function(req, res, next) {
       phoneNumber: user.phoneNumber
     })
     .returning('id')
-    .then(function(data, err){
+    .then(function(data){
+      knex('users').first().where({
+        email: req.body.email
+      }).then(function(data, err){
       if(!checkErr(res, err)){
         res.send('success');
       }
     });
-  }
+  });
+
   function hashPassword(user, callback){
     bcrypt.genSalt(10, function(err, salt){
       bcrypt.hash(user.password, salt, function(err, hash){
@@ -53,9 +57,8 @@ router.post('/signup', function(req, res, next) {
       });
     });
   }
+}
 });
-
-
 
 router.post('/signin', function(req, res, next) {
   knex('users').first().where({
