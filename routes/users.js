@@ -33,7 +33,9 @@ router.post('/signup', function(req, res, next) {
     })
     .returning('id')
     .then(function(data, err){
-      if(!checkErr(res, err)){
+      console.log(data)
+      if(!checkErr(res, err, data)){
+        console.log(data)
         var expires = {
           expiresIn : '7d'
         };
