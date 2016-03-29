@@ -31,10 +31,12 @@ router.post('/signup', function(req, res, next) {
       lastName: user.lastName,
       phoneNumber: user.phoneNumber
     })
-    .returning('id')
+    // .returning('id')
     .then(function(data, err){
       console.log(data)
       if(!checkErr(res, err, data)){
+        delete user.password;
+
         console.log(data)
         var expires = {
           expiresIn : '7d'
@@ -43,9 +45,9 @@ router.post('/signup', function(req, res, next) {
 
         var token = jsonWebToken.sign(user, secret, expires);
 
-        res.json({token : token, id: data});
+        res.json({token : token, user: data});
         res.end('End');
-        res.send('success');
+        // res.send('success');
       }
     });
   }

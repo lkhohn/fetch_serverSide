@@ -52,6 +52,7 @@ router.get('/claimableFetches', function(req, res, next){
 router.post('/', function(req, res, next){
   var newFetch = req.body;
   var date = new Date();
+  console.log(req.user);
   knex('fetches').insert({
     item: newFetch.item,
     paymentAmount: newFetch.paymentAmount,
