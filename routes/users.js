@@ -36,7 +36,7 @@ router.post('/signup', function(req, res, next) {
       console.log(data)
       if(!checkErr(res, err, data)){
         delete user.password;
-        user.id = data
+        user.id = data[0]
         console.log(data)
         var expires = {
           expiresIn : '7d'
