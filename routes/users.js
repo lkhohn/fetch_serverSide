@@ -37,6 +37,8 @@ router.post('/signup', function(req, res, next) {
         var expires = {
           expiresIn : '7d'
         };
+        var user = data;
+
         var token = jsonWebToken.sign(user, secret, expires);
 
         res.json({token : token});
