@@ -21,6 +21,17 @@ function checkErr(res, err){
 router.post('/signup', function(req, res, next) {
   var user = req.body;
   console.log(req.body);
+
+  function newUserCheck(user){
+    if(!user[0].email) {
+      console.log('user exists');
+    }
+    else{
+      hashPassword(user, registerUser);
+    }
+  }
+
+
   hashPassword(user, registerUser);
 
   function registerUser(user){
@@ -35,7 +46,6 @@ router.post('/signup', function(req, res, next) {
     .then(function(data, err){
       console.log(data);
       console.log(user);
-
 
       if(!checkErr(res, err, data)){
         delete user.password;
