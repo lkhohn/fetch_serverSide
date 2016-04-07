@@ -35,7 +35,7 @@ router.post('/signup', function(req, res, next) {
   //
   //   newUserCheck(user);
 
-  hashPassword(user, registerUser);
+  hashPassword(user, reggisterUser);
 
   function registerUser(user){
     knex('users').insert({
