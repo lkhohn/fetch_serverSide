@@ -23,16 +23,19 @@ router.post('/signup', function(req, res, next) {
   console.log(req.body);
 
   function newUserCheck(user){
-    if(!user[0].email) {
-      console.log('user exists');
+    knex('users').select().then(function(user){
+      if(!user[0].email) {
+        console.log('user exists');
+      }
+      else{
+        hashPassword(user, registerUser);
+      }
+    });
     }
-    else{
-      hashPassword(user, registerUser);
-    }
-  }
 
+    newUserCheck(user);
 
-  hashPassword(user, registerUser);
+  // hashPassword(user, registerUser);
 
   function registerUser(user){
     knex('users').insert({
