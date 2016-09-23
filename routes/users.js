@@ -93,7 +93,8 @@ router.post('/signin', function(req, res, next) {
 
 router.get('/userInformation', function(req, res, next){
   console.log(req.user);
-  knex('users').select().where({id: req.user.id})
+  knex('users').select('id', 'email', 'firstName', 'lastName', 'phoneNumber')
+  .where({id: req.user.id})
   .then(function(data, err){
     if(!checkErr(res, err)){
       res.json(data);
