@@ -22,7 +22,7 @@ router.post('/signup', function(req, res, next) {
   var user = req.body;
   console.log(req.body);
 
-  hashPassword(user, reggisterUser);
+  hashPassword(user, registerUser);
 
   function registerUser(user){
     knex('users').insert({
